@@ -18,8 +18,8 @@ jobs:
           python-version: ${{ matrix.python_version}}
       - name: install dependencies
         run: |
-          pip3 install --upgrade pip3
-          pip3 install -r requirments.txt
+          pip install --upgrade pip
+          pip install -r requirments.txt
            
       - name: checkout
         uses: actions/checkout@v2
@@ -28,8 +28,8 @@ jobs:
         run: |
           pwd
           ls 
-          python3 --version
-          python3 setup.py --version
+          python --version
+          python setup.py --version
           env:
             VERSION: $(python3 setup.py --version)
           #tag it  
