@@ -1,0 +1,34 @@
+on: 
+  push:
+    branches:
+      - master
+    paths:
+      -'extractCMRRPhysio/version.py'
+
+jobs:
+  publish:
+    strategy:
+      matrix:
+        python-version:[3.7,3.8]
+    runs-on: ubuntu-latest
+    steps:
+      
+        - name: setup python
+        uses: actions/setup-python@v1.1.1
+        with:
+            python-version: ${{ matrix.python_version}}
+      
+        - name: checkout
+        uses: actions/checkout@v2
+
+        - name: tag and push
+        run: |
+          env:
+            VERSION=$(python setup.py --version)
+          #tag it  
+          git tag -av${{env.VERSION}} -m "${{env.VERSION}}"
+          #push tag
+          git push origin v${{env.VERSION}}
+          
+        - name: PyPI
+        - name: Dockerhub  
