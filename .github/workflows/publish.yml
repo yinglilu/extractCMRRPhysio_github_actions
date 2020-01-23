@@ -22,15 +22,15 @@ jobs:
 
       - name: install dependencies
         run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -r requirements.txt
       
       - name: tag and push
         run: |
           pwd
           ls 
-          python --version
-          python setup.py --version
+          python3 --version
+          python3 setup.py --version
           env:
             VERSION: $(python3 setup.py --version)
           #tag it  
