@@ -25,15 +25,15 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install -r requirements.txt
       
-      - name: tag and push
-        run: |
-          pwd
-          ls 
-          python3 --version
-          python3 setup.py --version
-          #echo ${{ echo 'hello' }}
-          #git tag -a ${{VER}} -m "${{env.VERSION}}"
-          #git push origin v${{env.VERSION}}
+#       - name: tag and push
+#         run: |
+#           pwd
+#           ls 
+#           python3 --version
+#           python3 setup.py --version
+#           #echo ${{ echo 'hello' }}
+#           #git tag -a ${{VER}} -m "${{env.VERSION}}"
+#           #git push origin v${{env.VERSION}}
           
       #- name: PyPI
       #- name: Dockerhub  
