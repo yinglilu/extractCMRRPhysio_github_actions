@@ -32,7 +32,7 @@ jobs:
           python3 --version
           python3 setup.py --version
           echo $(echo 'hello')
-#           #git tag -a ${{VER}} -m "${{env.VERSION}}"
+          echo git tag -a v$(python3 setup.py --version) -m "v$(python3 setup.py --version)"
 #           #git push origin v${{env.VERSION}}
           
       #- name: PyPI
