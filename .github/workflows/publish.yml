@@ -16,14 +16,15 @@ jobs:
         uses: actions/setup-python@v1.1.1
         with:
           python-version: ${{ matrix.python_version}}
-      - name: install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
            
       - name: checkout
         uses: actions/checkout@v2
 
+      - name: install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      
       - name: tag and push
         run: |
           pwd
