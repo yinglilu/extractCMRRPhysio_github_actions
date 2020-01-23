@@ -23,7 +23,7 @@ jobs:
       - name: tag and push
         run: |
           env:
-            VERSION=$(python setup.py --version)
+            VERSION: $(python setup.py --version)
           #tag it  
           git tag -av${{env.VERSION}} -m "${{env.VERSION}}"
           #push tag
