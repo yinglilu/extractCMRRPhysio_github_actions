@@ -25,14 +25,16 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install -r requirements.txt
       
+      - name: get env
+        env:
+            VERSION: $(python3 setup.py --version)
+          
       - name: tag and push
         run: |
           pwd
           ls 
           python3 --version
           python3 setup.py --version
-          env:
-            VERSION: $(python3 setup.py --version)
           #tag it  
           git tag -av${{env.VERSION}} -m "${{env.VERSION}}"
           #push tag
