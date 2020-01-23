@@ -27,17 +27,15 @@ jobs:
       
       - name: tag and push
         env:
-          VERSION: 1.1.1#$(python3 setup.py --version)
+          VERSION: 1.1.1
         run: |
           pwd
           ls 
           python3 --version
           python3 setup.py --version
-          #tag it  
-          echo v${{env.VERSION}}
-          git tag -av${{env.VERSION}} -m "${{env.VERSION}}"
-          #push tag
-          git push origin v${{env.VERSION}}
+          echo ${{env.VERSION}}
+          #git tag -a ${{env.VERSION}} -m "${{env.VERSION}}"
+          #git push origin v${{env.VERSION}}
           
       #- name: PyPI
       #- name: Dockerhub  
