@@ -32,6 +32,8 @@ jobs:
           python3 --version
           python3 setup.py --version
           echo $(echo 'hello')
+          git config --global user.email "yinglilu@gmail.com"
+          git config --global user.name "YingLi Lu"
           git tag -a v$(python3 setup.py --version) -m "v$(python3 setup.py --version)"
 #           #git push origin v${{env.VERSION}}
           
