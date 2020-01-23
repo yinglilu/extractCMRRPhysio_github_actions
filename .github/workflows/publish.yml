@@ -34,6 +34,7 @@ jobs:
           python3 --version
           python3 setup.py --version
           #tag it  
+          echo v${{env.VERSION}}
           git tag -av${{env.VERSION}} -m "${{env.VERSION}}"
           #push tag
           git push origin v${{env.VERSION}}
