@@ -33,7 +33,7 @@ jobs:
           ls 
           python3 --version
           python3 setup.py --version
-          echo ${{VER}}
+          echo ${{ env.VER }}
           #git tag -a ${{VER}} -m "${{env.VERSION}}"
           #git push origin v${{env.VERSION}}
           
