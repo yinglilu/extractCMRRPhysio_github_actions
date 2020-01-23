@@ -30,7 +30,7 @@ jobs:
           pwd
           ls 
           python3 --version
-#           python3 setup.py --version
+          python3 setup.py --version
 #           #echo ${{ echo 'hello' }}
 #           #git tag -a ${{VER}} -m "${{env.VERSION}}"
 #           #git push origin v${{env.VERSION}}
