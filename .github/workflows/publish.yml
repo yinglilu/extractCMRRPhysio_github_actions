@@ -26,7 +26,7 @@ jobs:
           which python3
           which pip
           which pip3
-          pip3 install --upgrade pip3
+          pip3 install --upgrade pip
           pip3 install setuptools wheel twine   
           pip3 install -r requirements.txt
           #python3 -m pip install --upgrade pip
