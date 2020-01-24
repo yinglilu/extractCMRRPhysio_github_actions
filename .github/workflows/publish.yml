@@ -26,16 +26,15 @@ jobs:
           python3 -m pip install -r requirements.txt
       
       - name: Set env
-        run: echo ::set-env name=VERSION_1::$(python3 setup.py --version)
+        run: echo ::set-env name=VERSION::$(python3 setup.py --version)
        
       - name: tag and push
         run: |
-          python3 setup.py --version
-          echo $VERSION_1
-          #git config --global user.email "yinglilu@gmail.com"
-          #git config --global user.name "YingLi Lu"
-          #git tag -a v$(python3 setup.py --version) -m "v$(python3 setup.py --version)"
-          #git push origin v$(python3 setup.py --version)
+          echo $VERSION
+          git config --global user.email "yinglilu@gmail.com"
+          git config --global user.name "YingLi Lu"
+          git tag -a v$VERSION -m "release v$VERSION"
+          git push origin v$VERSION
           
            
       #- name: PyPI
