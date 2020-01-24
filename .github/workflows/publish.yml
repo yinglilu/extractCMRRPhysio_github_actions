@@ -25,13 +25,12 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install -r requirements.txt
       
+      - name: Set env
+        run: echo ::set-env name=VERSION_1::$(python3 setup.py --version)
+       
       - name: tag and push
-        env:
-          VER: $(python3 setup.py --version) 
         run: |
           python3 setup.py --version
-          echo $VER
-          echo "::set-env name=VERSION_1::$(python3 setup.py --version)"
           echo $VERSION_1
           #git config --global user.email "yinglilu@gmail.com"
           #git config --global user.name "YingLi Lu"
