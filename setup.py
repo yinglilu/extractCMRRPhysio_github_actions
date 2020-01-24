@@ -14,7 +14,7 @@ setuptools.setup(name='extractCMRRPhysio',
                  author_email='yinglilu@gmail.com',
                  long_description=long_description,
                  long_description_content_type="text/markdown",
-                 url="https://github.com/yinglilu/extractCMRRPhysio",
+                 url="https://github.com/yinglilu/extractCMRRPhysio_github_actions",
                  license='MIT',
                  entry_points={
                      'console_scripts': [
