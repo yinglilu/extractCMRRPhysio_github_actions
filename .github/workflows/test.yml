@@ -1,0 +1,30 @@
+publish:
+    strategy:
+      matrix:
+        python-version: [3.6]
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup python
+        uses: actions/setup-python@v1.1.1
+        with:
+          python-version: ${{ matrix.python_version }}
+           
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: install dependencies
+        run: |
+          sudo pip3 install --upgrade pip
+          sudo pip3 install setuptools wheel twine   
+          sudo pip3 install -r requirements.txt
+      
+      - name: install editable mode in order to turn the binary defined by setup.py's entry_points
+        run: | 
+          sudo pip install -e .
+          
+      - name: test
+        run: |
+          extractCMRRPhysio ./tests/data/test.dcm  ${OUTPUT_DIR}
+          diff ${OUTPUT_DIR}/Physio_20171130_122138_c71e64f9-f493-4ca9-8e92-473f5e0616cc_Info.log ./tests/data/matlab_results/Physio_20171130_122138_c71e64f9-f493-4ca9-8e92-473f5e0616cc_Info.log
+          diff ${OUTPUT_DIR}/Physio_20171130_122138_c71e64f9-f493-4ca9-8e92-473f5e0616cc_PULS.log ./tests/data/matlab_results/Physio_20171130_122138_c71e64f9-f493-4ca9-8e92-473f5e0616cc_PULS.log
+          diff ${OUTPUT_DIR}/Physio_20171130_122138_c71e64f9-f493-4ca9-8e92-473f5e0616cc_RESP.log ./tests/data/matlab_results/Physio_20171130_122138_c71e64f9-f493-4ca9-8e92-473f5e0616cc_RESP.log
