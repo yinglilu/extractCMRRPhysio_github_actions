@@ -23,8 +23,8 @@ jobs:
       - name: install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install wheel twine  
-          python3 -m pip install -r requirements.txt
+          pip install wheel twine  
+          pip install -r requirements.txt
           
       - name: Set env VERSION
         run: echo ::set-env name=VERSION::$(python3 setup.py --version)
