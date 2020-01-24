@@ -3,7 +3,7 @@ on:
     branches:
       - master
      paths:
-       - 'extractCMRRPhysio/**'
+       - 'extractCMRRPhysio/**.py'
 
 jobs:
   publish:
