@@ -31,11 +31,13 @@ jobs:
         run: |
           python3 setup.py --version
           echo $VER
+          echo "::set-env name=VERSION_1::$(python3 setup.py --version)"
+          echo $VERSION_1
           #git config --global user.email "yinglilu@gmail.com"
           #git config --global user.name "YingLi Lu"
           #git tag -a v$(python3 setup.py --version) -m "v$(python3 setup.py --version)"
           #git push origin v$(python3 setup.py --version)
-          shell: bash
+          
            
       #- name: PyPI
       #- name: Dockerhub  
