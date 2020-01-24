@@ -25,6 +25,6 @@ setuptools.setup(name='extractCMRRPhysio',
                      'pytest',
                      'pydicom',
                  ],
-                 python_requires='>=3.7',
-                 zip_safe=False,
+                 python_requires='>=3.6',
+                 zip_safe=True,
                 )
