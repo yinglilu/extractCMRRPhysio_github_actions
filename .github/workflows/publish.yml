@@ -26,9 +26,9 @@ jobs:
           which python3
           which pip
           which pip3
-          pip3 install --upgrade pip
-          pip3 install setuptools wheel twine   
-          pip3 install -r requirements.txt
+          sudo pip3 install --upgrade pip
+          sudo pip3 install setuptools wheel twine   
+          sudo pip3 install -r requirements.txt
           #python3 -m pip install --upgrade pip
           #python3 -m pip install setuptools wheel twine   
           #pip install -r requirements.txt
