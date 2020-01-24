@@ -23,7 +23,7 @@ jobs:
       - name: install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install twine 
+          python3 -m pip install wheel twine  
           python3 -m pip install -r requirements.txt
           
       - name: Set env VERSION
@@ -35,7 +35,8 @@ jobs:
           git config --global user.email "yinglilu@gmail.com"
           git config --global user.name "YingLi Lu"
           git tag -a v$VERSION -m "release v$VERSION"
-          git push origin v$VERSION
+          #git push origin v$VERSION
+          git push -f --tags
            
       - name: PyPI
         env:
