@@ -9,7 +9,7 @@ jobs:
   publish:
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.6]
     runs-on: ubuntu-latest
     steps:
       - name: setup python
@@ -23,7 +23,7 @@ jobs:
       - name: install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          pip install wheel twine  
+          pip install setuptools wheel twine   
           pip install -r requirements.txt
           
       - name: Set env VERSION
