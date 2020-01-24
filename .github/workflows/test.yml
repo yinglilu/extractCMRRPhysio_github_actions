@@ -1,4 +1,10 @@
-publish:
+on:
+  push:
+    branches: 
+      - master
+
+jobs:
+  test:
     strategy:
       matrix:
         python-version: [3.6]
@@ -8,7 +14,7 @@ publish:
         uses: actions/setup-python@v1.1.1
         with:
           python-version: ${{ matrix.python_version }}
-           
+
       - name: checkout
         uses: actions/checkout@v2
 
@@ -17,11 +23,11 @@ publish:
           sudo pip3 install --upgrade pip
           sudo pip3 install setuptools wheel twine   
           sudo pip3 install -r requirements.txt
-      
+
       - name: install editable mode in order to turn the binary defined by setup.py's entry_points
         run: | 
           sudo pip install -e .
-          
+
       - name: test
         run: |
           extractCMRRPhysio ./tests/data/test.dcm  ${OUTPUT_DIR}
