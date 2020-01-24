@@ -2,8 +2,8 @@ on:
   push:
     branches:
       - master
-     paths:
-       - 'extractCMRRPhysio/*.py'
+    paths:
+      - 'extractCMRRPhysio/*.py'
 
 jobs:
   publish:
