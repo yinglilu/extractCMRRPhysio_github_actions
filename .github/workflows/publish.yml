@@ -35,6 +35,7 @@ jobs:
           #git config --global user.name "YingLi Lu"
           #git tag -a v$(python3 setup.py --version) -m "v$(python3 setup.py --version)"
           #git push origin v$(python3 setup.py --version)
-          
+          shell: bash
+           
       #- name: PyPI
       #- name: Dockerhub  
