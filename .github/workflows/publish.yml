@@ -47,6 +47,6 @@ jobs:
       - name: Dockerhub
         run: |
           docker build -t yinglilu/extractCMRRPhysio:latest -t yinglilu/extractCMRRPhysio:$VERSION
-          docker login -u ${{ DOCKERHUB_USERNAME }} -p ${{ DOCKERHUB_PASSWORD }}
+          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
           docker push yinglilu/extractCMRRPhysio:$VERSION
           docker push yinglilu/extractCMRRPhysio:latest
