@@ -23,16 +23,7 @@ jobs:
 
       - name: install dependencies
         run: |
-          which python
-          which python3
-          which pip
-          which pip3
-          sudo pip3 install --upgrade pip
-          sudo pip3 install setuptools wheel twine   
-          sudo pip3 install -r requirements.txt
-          #python3 -m pip install --upgrade pip
-          #python3 -m pip install setuptools wheel twine   
-          #pip install -r requirements.txt
+          sudo pip3 install --upgrade pip setuptools wheel twine   
           
       - name: Set env VERSION
         run: echo ::set-env name=VERSION::$(python3 setup.py --version)
@@ -43,7 +34,6 @@ jobs:
           git config --global user.email "yinglilu@gmail.com"
           git config --global user.name "YingLi Lu"
           git tag -a v$VERSION -m "release v$VERSION"
-          #git push origin v$VERSION
           git push -f --tags
            
       - name: PyPI
@@ -52,7 +42,5 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
           python3 setup.py sdist bdist_wheel
-          twine --version
-          #twine upload --skip-existing dist/*
-          twine upload --skip-existing --repository-url https://test.pypi.org/legacy/ dist/*
+          twine upload dist/*
       #- name: Dockerhub  
