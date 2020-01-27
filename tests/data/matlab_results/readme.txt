@@ -1,2 +1,2 @@
 generaged under Matlab:
-    extractCMRRPhysio('test.dcm')
+    extractCMRRPhysio('physio.dcm')

@@ -92,7 +92,7 @@ class Unwrapper:
 
                     # write log file
                     # debug
-                    print(log_data)
+                    # print(log_data)
                     full_log_filename = os.path.join(
                         self.output_path, log_filename)
                     self.logger.info('writing {}'.format(full_log_filename))
@@ -104,8 +104,8 @@ class Unwrapper:
             return full_log_filenames
 
         except KeyError as e:
-            logging.exception(e + 'not found!')
+            logging.exception(str(e) + ' not found!')
             return
         except Exception as e:
-            logging.exception(e)
+            logging.exception(str(e))
             return
