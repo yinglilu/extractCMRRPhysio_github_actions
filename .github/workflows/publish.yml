@@ -46,7 +46,7 @@ jobs:
           twine upload dist/*
       - name: Dockerhub
         run: |
-          docker build -t yinglilu/extractcmrrphysio:latest -t yinglilu/extractcmrrphysio:$VERSION
+          docker build -t yinglilu/extractcmrrphysio:latest -t yinglilu/extractcmrrphysio:$VERSION .
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
           docker push yinglilu/extractcmrrphysio:$VERSION
           docker push yinglilu/extractcmrrphysio:latest
