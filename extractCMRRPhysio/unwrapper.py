@@ -104,7 +104,8 @@ class Unwrapper:
             return full_log_filenames
 
         except KeyError as e:
-            logging.exception(str(e) + ' not found!')
+            logging.exception(os.path.realpath(
+                self.filename)+": tag " + str(e) + ' not found!')
             return
         except Exception as e:
             logging.exception(str(e))
