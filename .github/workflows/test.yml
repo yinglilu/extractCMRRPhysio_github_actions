@@ -21,7 +21,7 @@ jobs:
     
       - name: install 
         run: | 
-          sudo pip3 install --upgrade pip pytest
+          sudo pip3 install --upgrade setuptools pip pytest
           sudo pip3 install .
 
       - name: test
