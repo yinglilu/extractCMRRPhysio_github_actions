@@ -44,4 +44,9 @@ jobs:
         run: |
           python3 setup.py sdist bdist_wheel
           twine upload dist/*
-      #- name: Dockerhub  
+      - name: Dockerhub
+      run: |
+          docker build -t yinglilu/extractCMRRPhysio:latest -t yinglilu/extractCMRRPhysio:${{ git.ref }}
+          docker login -u ${{ DOCKERHUB_USERNAME }} -p ${{ DOCKERHUB_PASSWORD }}
+          docker push yinglilu/extractCMRRPhysio:${{ git.ref }}
+          docker push yinglilu/extractCMRRPhysio:latest
