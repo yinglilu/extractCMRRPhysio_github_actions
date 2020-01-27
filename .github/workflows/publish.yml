@@ -23,7 +23,8 @@ jobs:
 
       - name: install dependencies
         run: |
-          sudo pip3 install --upgrade pip setuptools wheel twine   
+          sudo pip3 install --upgrade pip
+          sudo pip3 install --upgrade setuptools wheel twine
           
       - name: Set env VERSION
         run: echo ::set-env name=VERSION::$(python3 setup.py --version)
