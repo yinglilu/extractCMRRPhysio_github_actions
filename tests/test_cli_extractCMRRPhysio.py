@@ -47,15 +47,9 @@ def test_physio_data():
 # test non-physio: non-physio.dcm
 #########
 
-# cli_test_physio:
-#     extractCMRRPhysio ./data/test.dcm  ${OUTPUT_DIR}
-#     # diff -u ${OUTPUT_DIR}/Physio_20171130_122138_c71e64f9-f493-4ca9-8e92-473f5e0616cc_Info.log ./data/matlab_results/Physio_20171130_122138_c71e64f9-f493-4ca9-8e92-473f5e0616cc_Info.log
-#     diff - u ${OUTPUT_DIR}/Physio_20171130_122138_c71e64f9-f493-4ca9-8e92-473f5e0616cc_PULS.log ./data/matlab_results/Physio_20171130_122138_c71e64f9-f493-4ca9-8e92-473f5e0616cc_PULS.log
-#     diff ${OUTPUT_DIR}/Physio_20171130_122138_c71e64f9-f493-4ca9-8e92-473f5e0616cc_RESP.log ./data/matlab_results/Physio_20171130_122138_c71e64f9-f493-4ca9-8e92-473f5e0616cc_RESP.log
+def test_non_physiso_data():
+    '''test non-physio: non-physio.dcm, don't have corresponding matlab results'''
 
-#     # rm ${OUTPUT_DIR}/Physio_20171130_122138_c71e64f9-f493-4ca9-8e92-473f5e0616cc_Info.log
-#     # rm ${OUTPUT_DIR}/Physio_20171130_122138_c71e64f9-f493-4ca9-8e92-473f5e0616cc_PULS.log
-#     # rm ${OUTPUT_DIR}/Physio_20171130_122138_c71e64f9-f493-4ca9-8e92-473f5e0616cc_RESP.log
-
-# cli_test_non-physio:
-#     extractCMRRPhysio ./data/test.dcm  ${OUTPUT_DIR}
+    cmd = f"extractCMRRPhysio {os.path.join(data_dir,'non-physio.dcm')} {output_dir}"
+    r = os.system(cmd)
+    assert r == 0
