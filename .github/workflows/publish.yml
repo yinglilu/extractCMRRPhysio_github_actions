@@ -1,9 +1,10 @@
 on: 
-  push:
+  pull_request:
+    types: [closed]
     branches:
       - master
-#    paths:
-#      - 'extractCMRRPhysio/version.py'
+    paths:
+      - 'extractCMRRPhysio/version.py'
 
 jobs:
   publish:
