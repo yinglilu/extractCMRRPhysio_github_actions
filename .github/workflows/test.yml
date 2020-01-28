@@ -7,11 +7,11 @@ jobs:
   #########
   # test python source codes and setup.py
   #########
-  test:
+  test_linux_macos:
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        python-version: [3.6, 3.7, 3.8]
+        os: [ubuntu-latest, macos-latest]
+        python-version: [3.8]
     runs-on: ${{ matrix.os }}
     steps:
       - name: setup python
@@ -24,10 +24,12 @@ jobs:
 
       - name: install
         run: |
-          sudo pip3 install --upgrade pip
-          sudo pip3 install --upgrade setuptools pytest
+          alias python=python3
+          alias pip=pip3
+          sudo python -m pip install --upgrade pip
+          sudo pip install --upgrade setuptools pytest
           # install package
-          sudo pip3 install .
+          sudo pip install .
 
       - name: test
         run: |
@@ -62,7 +64,7 @@ jobs:
   # test Dockerfile
   #########
   test_Dockerfile:
-    needs: test
+    needs: test_linux_macos
     runs-on: ubuntu-latest
     steps:
       - name: checkout
