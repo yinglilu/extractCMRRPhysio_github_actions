@@ -33,9 +33,13 @@ jobs:
   test_Dockerfile:
     runs-on: [ubuntu-latest]
     steps:
+      - name: checkout
+        uses: actions/checkout@v2
+    
       - name: build docker image
         run: | 
           docker build -t test .
+    
       - name: test
         run: |
           dockr run --rm test
