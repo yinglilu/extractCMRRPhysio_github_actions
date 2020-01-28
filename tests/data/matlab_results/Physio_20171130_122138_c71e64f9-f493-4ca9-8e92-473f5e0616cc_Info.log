@@ -2,7 +2,7 @@ UUID        = c71e64f9-f493-4ca9-8e92-473f5e0616cc
 ScanDate    = 20171130_122138
 LogVersion  = EJA_1
 LogDataType = ACQUISITION_INFO
-NumSlices   = 60
+NumSlices   = 601
 NumVolumes  = 330
 
 VOLUME   SLICE   ACQ_START_TICS  ACQ_FINISH_TICS
