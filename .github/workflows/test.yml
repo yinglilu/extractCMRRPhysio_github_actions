@@ -21,8 +21,8 @@ jobs:
     
       - name: install 
         run: | 
-          python3 -m pip3 install --upgrade pip
-          python3 -m pip3 install --upgrade setuptools pytest
+          python3 -m pip install --upgrade pip
+          python3 -m pip install --upgrade setuptools pytest
           # install package
           pip3 install .
 
