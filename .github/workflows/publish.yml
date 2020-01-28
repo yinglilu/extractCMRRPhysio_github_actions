@@ -1,13 +1,10 @@
 on: 
-  #push:
-  #  branches:
-  #    - master
-  # pull_request:
-  #   types: [closed]
-  #   branches:
-  #     - master
-  #   paths:
-  #     - 'extractCMRRPhysio/version.py'
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+    paths:
+       - 'extractCMRRPhysio/version.py'
 
 jobs:
   publish:
@@ -32,7 +29,7 @@ jobs:
       - name: Set env VERSION
         run: echo ::set-env name=VERSION::$(python3 setup.py --version)
        
-      - name: git tag and push
+      - name: git tag and push, trigger release source code automatically
         run: |
           echo $VERSION
           git config --global user.email "yinglilu@gmail.com"
@@ -47,6 +44,7 @@ jobs:
         run: |
           python3 setup.py sdist bdist_wheel
           twine upload dist/*
+      
       - name: Dockerhub
         run: |
           docker build -t yinglilu/extractcmrrphysio:latest -t yinglilu/extractcmrrphysio:$VERSION .
