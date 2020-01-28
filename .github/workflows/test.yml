@@ -42,6 +42,6 @@ jobs:
     
       - name: test
         run: |
-          docker run --rm -v ./tests:/data -v /tmp:/tmp test extractCMRRPhysio /tests/data/non-physio.dcm /tmp
-          docker run --rm -v ./tests:/data -v /tmp:/tmp test extractCMRRPhysio /tests/data/physio.dcm /tmp
+          docker run --rm -v $(realpath tests/data):/data -v /tmp:/tmp test extractCMRRPhysio /data/non-physio.dcm /tmp
+          docker run --rm -v $(realpath tests/data):/data -v /tmp:/tmp test extractCMRRPhysio /data/physio.dcm /tmp
           
