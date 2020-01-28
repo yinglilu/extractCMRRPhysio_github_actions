@@ -24,12 +24,10 @@ jobs:
 
       - name: install
         run: |
-          alias python=python3
-          alias pip=pip3
-          sudo python -m pip install --upgrade pip
-          sudo pip install --upgrade setuptools pytest
+          sudo python3 -m pip install --upgrade pip
+          sudo pip3 install --upgrade setuptools pytest
           # install package
-          sudo pip install .
+          sudo pip3 install .
 
       - name: test
         run: |
@@ -38,7 +36,7 @@ jobs:
   test_windows:
     strategy:
       matrix:
-        python-version: [3.6, 3.7, 3.8]
+        python-version: [3.8]
     runs-on: windows-latest
     steps:
       - name: setup python
