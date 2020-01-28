@@ -29,4 +29,14 @@ jobs:
       - name: test
         run: |
           pytest ./tests
+
+  test_Dockerfile:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: build docker image
+        run: | 
+          docker build -t test .
+      - name: test
+        run: |
+          dockr run --rm test
           
