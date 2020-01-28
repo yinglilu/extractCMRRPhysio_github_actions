@@ -5,4 +5,4 @@ WORKDIR /app
 COPY setup.py README.md ./ 
 COPY ./extractCMRRPhysio ./extractCMRRPhysio
 RUN pip3 install .
-ENTRYPOINT ["extractCMRRPhysio"]
+CMD ["extractCMRRPhysio","-h"]
