@@ -42,5 +42,6 @@ jobs:
     
       - name: test
         run: |
-          docker run --rm test
+          docker run --rm -v ./tests/data:/data -v /tmp:/tmp test extractCMRRPhysio /data/non-physio.dcm /tmp
+          docker run --rm -v ./tests/data:/data -v /tmp:/tmp test extractCMRRPhysio /data/physio.dcm /tmp
           
