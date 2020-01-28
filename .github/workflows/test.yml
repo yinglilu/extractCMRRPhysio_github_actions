@@ -1,6 +1,6 @@
 on:
   pull_request:
-    branches: 
+    branches:
       - master
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        python-version: [3.6,3.7,3.8]
+        python-version: [3.6, 3.7, 3.8]
     runs-on: ${{ matrix.os }}
     steps:
       - name: setup python
@@ -21,9 +21,9 @@ jobs:
 
       - name: checkout
         uses: actions/checkout@v2
-    
-      - name: install 
-        run: | 
+
+      - name: install
+        run: |
           sudo pip3 install --upgrade pip
           sudo pip3 install --upgrade setuptools pytest
           # install package
@@ -33,22 +33,46 @@ jobs:
         run: |
           pytest ./tests
 
+  test:
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8]
+    runs-on: windows-latest
+    steps:
+      - name: setup python
+        uses: actions/setup-python@v1.1.1
+        with:
+          python-version: ${{ matrix.python_version }}
+
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: install
+        run: |
+          pip install --upgrade pip
+          pip install --upgrade setuptools pytest
+          # install package
+          pip install .
+
+      - name: test
+        run: |
+          pytest ./tests
+
   #########
   # test Dockerfile
-  #########          
+  #########
   test_Dockerfile:
     needs: test
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v2
-    
+
       - name: build docker image
-        run: | 
+        run: |
           docker build -t test .
-    
+
       - name: test
         run: |
           docker run --rm -v $(realpath tests/data):/data -v /tmp:/tmp test extractCMRRPhysio /data/non-physio.dcm /tmp
           docker run --rm -v $(realpath tests/data):/data -v /tmp:/tmp test extractCMRRPhysio /data/physio.dcm /tmp
-          

@@ -1,10 +1,10 @@
-on: 
-  pull_request:
-    types: [closed]
-    branches:
-      - master
-    paths:
-       - 'extractCMRRPhysio/version.py'
+#on:
+# pull_request:
+#   types: [closed]
+#   branches:
+#     - master
+#   paths:
+#      - 'extractCMRRPhysio/version.py'
 
 jobs:
   publish:
@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-python@v1.1.1
         with:
           python-version: ${{ matrix.python_version }}
-           
+
       - name: checkout
         uses: actions/checkout@v2
 
@@ -25,10 +25,10 @@ jobs:
         run: |
           sudo pip3 install --upgrade pip
           sudo pip3 install --upgrade setuptools wheel twine
-          
+
       - name: Set env VERSION
         run: echo ::set-env name=VERSION::$(python3 setup.py --version)
-       
+
       - name: git tag and push, trigger release source code automatically
         run: |
           echo $VERSION
@@ -36,7 +36,7 @@ jobs:
           git config --global user.name "YingLi Lu"
           git tag -a v$VERSION -m "release v$VERSION"
           git push -f --tags
-           
+
       - name: PyPI
         env:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
@@ -44,7 +44,7 @@ jobs:
         run: |
           python3 setup.py sdist bdist_wheel
           twine upload dist/*
-      
+
       - name: Dockerhub
         run: |
           docker build -t yinglilu/extractcmrrphysio:latest -t yinglilu/extractcmrrphysio:$VERSION .
